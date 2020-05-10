@@ -5,7 +5,7 @@ import {
   updateToggleBar,
   toggleModal,
   actorsInfo,
-  recm,
+  recmShow,
 } from "../Components/Functions.js";
 
 class ShowInfo extends CreateElement {
@@ -184,7 +184,7 @@ class ShowInfo extends CreateElement {
     getData.movieItems("tv", "recommendations", id).then((res) => {
       res.slice(0, 4).forEach((recm) => {
         htmlRecm += `
-        <div class="section-info__recomendations-box" data-movieid=${recm.id}>
+        <div class="section-info__recomendations-box" data-showid=${recm.id}>
         <div class="section-info__recomendations-box-img">
           <img src="https://image.tmdb.org/t/p/w300${recm.backdrop_path}" alt="recomendations-img" />
         </div>
@@ -233,7 +233,10 @@ class ShowInfo extends CreateElement {
     getData.searchInfo("tv", id).then((info) => {
       this.render(info);
       toggleModal();
-      recm("section-info__recomendations", "section-info__recomendations-box");
+      recmShow(
+        "section-info__recomendations",
+        "section-info__recomendations-box"
+      );
       actorsInfo("section-info__actors-flex", "section-info__actors-box");
     });
   }

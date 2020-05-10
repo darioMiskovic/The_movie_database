@@ -53,6 +53,19 @@ export function recm(parrent, el) {
   });
 }
 
+export function recmShow(parrent, el) {
+  const recomended = document.querySelector(`.${parrent}`);
+  recomended.addEventListener("click", (e) => {
+    let movieID = e.target.closest(`.${el}`).dataset.showid;
+
+    if (movieID) {
+      setId("showId", movieID);
+      location.reload();
+      this.infoLoad();
+    }
+  });
+}
+
 export function movieInfo(parrent, el) {
   const recomended = document.querySelector(`.${parrent}`);
   recomended.addEventListener("click", (e) => {
