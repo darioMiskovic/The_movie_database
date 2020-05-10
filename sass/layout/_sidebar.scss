@@ -1,0 +1,78 @@
+.sidebar {
+  background-color: $color-primary-dark;
+  grid-row: 2/-1;
+  z-index: 1;
+  @include responsive(tab-land) {
+    z-index: 16;
+  }
+
+  //Set inset shadow if togglebar is active
+  &__active {
+    box-shadow: inset -0.4rem 0 0.9rem rgba(0, 0, 0, 0.3);
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  & > *:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+  a {
+    width: 100%;
+  }
+
+  &__box {
+    align-self: stretch;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+
+    transition: background-color 0.3s;
+  }
+
+  &__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: $color-white;
+  }
+
+  &__box:hover {
+    cursor: pointer;
+
+    background-color: $color-icon;
+  }
+
+  .active {
+    background-color: $color-icon;
+  }
+
+  //MEDIA QUERY
+  @include responsive(phone) {
+    grid-row: 2/3;
+    grid-column: 1/-1;
+
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 1rem;
+    padding: 1rem 0;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+
+    & > *:not(:last-child) {
+      margin-bottom: 0;
+    }
+
+    a {
+      width: auto;
+    }
+
+    &__box {
+      padding: 1rem 2rem;
+    }
+  }
+}

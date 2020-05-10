@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="The Movie Database" />
+    <meta name="keywords" content="Movie,TV Show,Actors" />
+    <meta name="author" content="Dario Miskovic" />
+    <script
+      src="https://kit.fontawesome.com/ad2a351d60.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>MMDB</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <img src="img/logo.png" alt="Logo" />
+      </div>
+      <!--Header-->
+      <header class="header">
+        <form id="header__form" class="header__form">
+          <input
+            type="text"
+            placeholder="Search movies, series, actors, etc."
+            class="header__form--search"
+            id="header__form--search"
+          />
+          <button id="header__form--btn" class="header__form--btn">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+
+        <div class="header__user">
+          <div class="header__user--name">John</div>
+          <div class="header__user--img"><i class="fas fa-user"></i></div>
+          <div class="header__user--logout">
+            <i class="fas fa-sign-out-alt"></i>
+          </div>
+        </div>
+      </header>
+      <!--Sidebar-->
+      <nav class="sidebar">
+        <!--Sidebar Home-->
+        <a href="index.html">
+          <div class="sidebar__box mt-2" id="home-icon">
+            <svg class="sidebar__icon">
+              <use xlink:href="../img/sprite.svg#icon-home"></use>
+            </svg>
+          </div>
+        </a>
+        <!--Sidebar Film-->
+        <div class="sidebar__box" id="movie-icon">
+          <svg class="sidebar__icon">
+            <use xlink:href="../img/sprite.svg#icon-film"></use>
+          </svg>
+        </div>
+
+        <!--Sidebar TV-->
+        <div class="sidebar__box" id="tv-icon">
+          <svg class="sidebar__icon">
+            <use xlink:href="../img/sprite.svg#icon-tv"></use>
+          </svg>
+        </div>
+
+        <!--Sidebar Heart-->
+        <a href="favorite.html">
+          <div class="sidebar__box active" id="fav-icon">
+            <svg class="sidebar__icon">
+              <use xlink:href="../img/sprite.svg#icon-heart"></use>
+            </svg>
+          </div>
+        </a>
+      </nav>
+      <!--Toggle Bar-->
+      <div class="toggleBar">
+        <h1 class="heading-1 mt-1 mb-2" id="program">Movies</h1>
+        <h3 class="heading-3">Genres</h3>
+
+        <ul class="toggleBar__list"></ul>
+        <!--Rating Box-->
+        <div class="toggleBar__rating">
+          <div class="range-val">
+            <h3 class="heading-3">Rating</h3>
+            <span id="rating-val">1.0</span>
+          </div>
+          <input
+            type="range"
+            id="rating-range"
+            name="vol"
+            class="rangebtn"
+            min="1"
+            max="10"
+            step="0.1"
+          />
+        </div>
+        <!--Release Year Box-->
+        <div class="toggleBar__year">
+          <div class="range-val">
+            <h3 class="heading-3">Release Year</h3>
+            <span id="year-val">2018</span>
+          </div>
+          <input
+            type="range"
+            id="year-range"
+            class="rangebtn"
+            name="vol"
+            min="1910"
+            max="2020"
+            step="10"
+          />
+        </div>
+
+        <div class="toggleBar__btn">
+          <h3>SEARCH</h3>
+        </div>
+      </div>
+
+      <!--Favorite-->
+      <section id="section-favorite" class="section-favorite">
+        <div class="search-box" data-movieID="222">
+          <img src="img/trend.jpg" alt="" />
+
+          <div class="search-box__title">Money Heist</div>
+          <div class="search-box__info">
+            <span class="search-box__info-year">
+              <i class="fas fa-calendar-alt"></i>2014</span
+            >
+            <span class="search-box__info-rate">
+              <i class="far fa-star"></i>8.1</span
+            >
+          </div>
+        </div>
+        <!--Box-->
+        <div class="search-box" data-movieID="222">
+          <img src="img/trend.jpg" alt="" />
+
+          <div class="search-box__title">Money Heist</div>
+          <div class="search-box__info">
+            <span class="search-box__info-year">
+              <i class="fas fa-calendar-alt"></i>2014</span
+            >
+            <span class="search-box__info-rate">
+              <i class="far fa-star"></i>8.1</span
+            >
+          </div>
+        </div>
+        <!--Box-->
+        <div class="search-box" data-movieID="222">
+          <img src="img/trend.jpg" alt="" />
+
+          <div class="search-box__title">Money Heist</div>
+          <div class="search-box__info">
+            <span class="search-box__info-year">
+              <i class="fas fa-calendar-alt"></i>2014</span
+            >
+            <span class="search-box__info-rate">
+              <i class="far fa-star"></i>8.1</span
+            >
+          </div>
+        </div>
+        <!--Box-->
+        <div class="search-box" data-movieID="222">
+          <img src="img/trend.jpg" alt="" />
+
+          <div class="search-box__title">Money Heist</div>
+          <div class="search-box__info">
+            <span class="search-box__info-year">
+              <i class="fas fa-calendar-alt"></i>2014</span
+            >
+            <span class="search-box__info-rate">
+              <i class="far fa-star"></i>8.1</span
+            >
+          </div>
+        </div>
+        <!--Box-->
+        <div class="search-box" data-movieID="222">
+          <img src="img/trend.jpg" alt="" />
+
+          <div class="search-box__title">Money Heist</div>
+          <div class="search-box__info">
+            <span class="search-box__info-year">
+              <i class="fas fa-calendar-alt"></i>2014</span
+            >
+            <span class="search-box__info-rate">
+              <i class="far fa-star"></i>8.1</span
+            >
+          </div>
+        </div>
+        <!--Box-->
+        <div class="search-box" data-movieID="222">
+          <img src="img/trend.jpg" alt="" />
+
+          <div class="search-box__title">Money Heist</div>
+          <div class="search-box__info">
+            <span class="search-box__info-year">
+              <i class="fas fa-calendar-alt"></i>2014</span
+            >
+            <span class="search-box__info-rate">
+              <i class="far fa-star"></i>8.1</span
+            >
+          </div>
+        </div>
+        <!--Box-->
+        <div class="search-box" data-movieID="222">
+          <img src="img/trend.jpg" alt="" />
+
+          <div class="search-box__title">Money Heist</div>
+          <div class="search-box__info">
+            <span class="search-box__info-year">
+              <i class="fas fa-calendar-alt"></i>2014</span
+            >
+            <span class="search-box__info-rate">
+              <i class="far fa-star"></i>8.1</span
+            >
+          </div>
+        </div>
+        <!--Box-->
+        <div class="search-box" data-movieID="222">
+          <img src="img/trend.jpg" alt="" />
+
+          <div class="search-box__title">Money Heist</div>
+          <div class="search-box__info">
+            <span class="search-box__info-year">
+              <i class="fas fa-calendar-alt"></i>2014</span
+            >
+            <span class="search-box__info-rate">
+              <i class="far fa-star"></i>8.1</span
+            >
+          </div>
+        </div>
+        <!--Box-->
+        <div class="search-box" data-movieID="222">
+          <img src="img/trend.jpg" alt="" />
+
+          <div class="search-box__title">Money Heist</div>
+          <div class="search-box__info">
+            <span class="search-box__info-year">
+              <i class="fas fa-calendar-alt"></i>2014</span
+            >
+            <span class="search-box__info-rate">
+              <i class="far fa-star"></i>8.1</span
+            >
+          </div>
+        </div>
+        <!--Box-->
+        <div class="search-box" data-movieID="222">
+          <img src="img/trend.jpg" alt="" />
+
+          <div class="search-box__title">Money Heist</div>
+          <div class="search-box__info">
+            <span class="search-box__info-year">
+              <i class="fas fa-calendar-alt"></i>2014</span
+            >
+            <span class="search-box__info-rate">
+              <i class="far fa-star"></i>8.1</span
+            >
+          </div>
+        </div>
+        <!--Box-->
+        <div class="search-box" data-movieID="222">
+          <img src="img/trend.jpg" alt="" />
+
+          <div class="search-box__title">Money Heist</div>
+          <div class="search-box__info">
+            <span class="search-box__info-year">
+              <i class="fas fa-calendar-alt"></i>2014</span
+            >
+            <span class="search-box__info-rate">
+              <i class="far fa-star"></i>8.1</span
+            >
+          </div>
+        </div>
+        <div class="section-search__pagination">
+          <span class="prev">
+            <i class="fas fa-chevron-left"></i>
+            1
+          </span>
+          <span class="curr">2</span>
+          <span class="next">
+            3
+            <i class="fas fa-chevron-right"></i>
+          </span>
+        </div>
+      </section>
+
+      <!--Footer-->
+      <footer class="footer">
+        <div class="footer__box">
+          <div class="footer__box-author">
+            Miskovic Movie Database | Created and designed by Dario Mišković
+            &copy; 2020
+          </div>
+
+          <div class="footer__box-logo">
+            <img src="img/SVG/dbm.svg" alt="" />
+            <img src="img/logo.png" alt="" />
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="scripts/app.js" type="module"></script>
+  </body>
+</html>

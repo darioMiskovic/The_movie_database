@@ -1,0 +1,165 @@
+.toggleBar {
+  transform: translateX(-150%);
+  transition: all 0.4s ease-in-out;
+  grid-column: full-start/center-start;
+  grid-row: 2/-1;
+
+  &__show {
+    transform: translateX(0);
+  }
+
+  background-color: $color-primary-light;
+  max-width: 20rem;
+  box-shadow: 0.4rem 0 1rem rgba(#000, 0.3); //ispraviti
+
+  .heading-1,
+  .heading-3 {
+    margin-left: 1.5rem;
+  }
+
+  &__list {
+    list-style: none;
+    margin-top: 2rem;
+    padding: 1rem 0;
+    @include bt;
+
+    .listActive {
+      background-color: $color-icon;
+    }
+
+    &--item {
+      padding: 0.5rem;
+
+      &:hover {
+        background-color: $color-primary-light-2;
+      }
+
+      a {
+        color: $color-white;
+        text-decoration: none;
+        letter-spacing: 0.1rem;
+        @include set-flex(space-between, center);
+        margin-left: 1rem;
+
+        .check {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  //Range box
+  &__rating,
+  &__year {
+    margin-top: 1rem;
+    @include set-flex(space-evenly, start, column);
+    @include bt;
+    height: 10rem;
+
+    .range-val {
+      @include set-flex(space-between, center);
+      width: 80%;
+
+      #year-val,
+      #rating-val {
+        font-size: 1.2rem;
+      }
+    }
+
+    //Range Style
+    .rangebtn {
+      margin-left: 1.5rem;
+      width: 80%;
+      -webkit-appearance: none;
+      height: 5px;
+      border-radius: 5px;
+      background: $color-icon;
+      outline: none;
+
+      //Range Style-circle
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 1.5rem;
+        width: 1.5rem;
+        border-radius: 50%;
+        background-color: $color-white;
+      }
+    }
+  }
+
+  //Search Btn
+  &__btn {
+    width: 80%;
+    padding: 0.7rem 1rem;
+    border-radius: 1rem;
+    margin: 0.3rem auto;
+    cursor: pointer;
+    background-color: $color-icon;
+    @include center;
+    transition: all 0.2s;
+
+    &:hover {
+      @include btn-hover;
+    }
+  }
+
+  @include responsive(tab-land) {
+    z-index: 15;
+    grid-column: full-start/-1;
+    grid-row: 3/7;
+
+    max-width: none;
+    text-align: center;
+
+    &__list {
+      &--item {
+        a {
+          justify-content: center;
+
+          h3 {
+            margin-right: 2rem;
+          }
+        }
+      }
+    }
+
+    &__rating,
+    &__year {
+      align-items: center;
+
+      .rangebtn {
+        margin-left: -1.5rem;
+      }
+    }
+  }
+
+  @include responsive(phone) {
+    z-index: 15;
+    grid-column: 1/-1;
+    grid-row: 3/7;
+
+    max-width: none;
+    text-align: center;
+
+    &__list {
+      &--item {
+        a {
+          justify-content: center;
+
+          h3 {
+            margin-right: 2rem;
+          }
+        }
+      }
+    }
+
+    &__rating,
+    &__year {
+      align-items: center;
+
+      .rangebtn {
+        margin-left: -1.5rem;
+      }
+    }
+  }
+}

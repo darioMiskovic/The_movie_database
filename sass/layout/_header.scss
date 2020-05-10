@@ -1,0 +1,72 @@
+.header {
+  background-color: $color-primary-dark;
+  grid-column: 2/-1;
+  z-index: 100;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  // box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
+
+  display: grid;
+  grid-template-columns: 1fr min-content 1fr min-content;
+
+  &__form {
+    grid-column: 2/3;
+
+    @include center;
+
+    &--search {
+      font-size: 1.5rem;
+      border-radius: 10rem;
+      border: none;
+      outline: none;
+      padding: 0.7rem 2rem;
+      width: 30rem;
+      background-color: $color-primary;
+      color: #fff;
+    }
+
+    &--btn {
+      font-size: 2rem;
+      padding: 1rem;
+      border: none;
+      background-color: transparent;
+      color: rgba(#fff, 0.5);
+      cursor: pointer;
+      transform: translateX(-4rem);
+    }
+  }
+
+  &__user {
+    grid-column: 4/5;
+    width: 15rem;
+    height: 100%;
+    // padding: 1rem;
+    font-size: 1.4rem;
+
+    @include set-flex(space-evenly, center);
+
+    &--img {
+      background-color: $color-white;
+      color: $color-primary-dark;
+      border-radius: 50%;
+      padding: 0.5rem;
+      @include center;
+    }
+
+    &--logout {
+      align-self: stretch;
+      padding: 0 1rem;
+      @include center;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  @include responsive(phone) {
+    border-bottom: 1px solid #ffffff40;
+  }
+}

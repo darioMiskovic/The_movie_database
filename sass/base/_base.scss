@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap");
+
+// FONT VARIABLES
+$font-primary: "Lato", sans-serif;
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; //10px
+
+  @include responsive(tab-land) {
+    font-size: 56.25%; //9px
+  }
+
+  @include responsive(tab-port) {
+    font-size: 50%; //8px
+  }
+
+  @include responsive(tab-port-sm) {
+    font-size: 43.75%; //7px
+  }
+}
+
+body {
+  font-family: $font-primary;
+  background-color: $color-primary;
+  color: $color-white;
+
+  //SCROLLBAR DESIGN
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: $color-primary-dark;
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: $color-icon;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+}
+
+.logo {
+  grid-row: 1/2;
+  grid-column: 1/2;
+  background-color: $color-primary-light-2;
+  @include center;
+
+  img {
+    width: 80%;
+  }
+
+  @include responsive(phone) {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    border-bottom: 1px solid #ffffff40;
+  }
+}

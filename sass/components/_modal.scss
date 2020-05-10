@@ -1,0 +1,32 @@
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 70%;
+  background-color: #000;
+
+  &_header {
+    @include set-flex(space-between, center);
+    height: 5rem;
+    width: 100%;
+    padding: 0 1rem;
+    &-title {
+      font-size: 2rem;
+    }
+    &-exit {
+      fill: $color-white;
+      height: 2rem;
+      width: 2rem;
+      cursor: pointer;
+    }
+  }
+
+  &_content {
+    height: 100%;
+  }
+}
+.active {
+  display: none;
+}

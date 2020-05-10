@@ -1,0 +1,9 @@
+.home__title {
+  @include heading-st;
+  font-size: 2.2rem;
+  grid-column: 1/-1;
+  justify-self: center;
+  align-self: flex-end;
+  margin-top: 7rem;
+  margin-bottom: 1rem;
+}

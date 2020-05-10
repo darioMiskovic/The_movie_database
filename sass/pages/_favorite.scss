@@ -1,0 +1,75 @@
+.section-favorite {
+  grid-column: center-start/center-end;
+  grid-row: 3/7;
+  display: grid;
+  grid-template-columns: repeat(4, min-content);
+  grid-template-rows: repeat(5, min-content);
+  gap: 2.7rem;
+  font-family: $primary-font;
+
+  .search-box {
+    cursor: pointer;
+    @include set-flex(center, center, column);
+    box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.4);
+    padding: 1rem;
+    background-color: #151c29;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: 0 0.5rem 1rem rgba($color-icon, 0.3);
+    }
+
+    &__title {
+      font-size: 1.5rem;
+      align-self: flex-start;
+    }
+
+    &__info {
+      align-self: stretch;
+      @include set-flex(space-between, center);
+      font-size: 1.3rem;
+
+      &-year,
+      &-rate {
+        i {
+          color: $color-icon;
+          margin-right: 0.3rem;
+        }
+      }
+    }
+  }
+  &__pagination {
+    justify-self: center;
+    grid-column: 1/-1;
+    font-size: 2.5rem;
+    margin-top: 5rem;
+    .prev,
+    .next {
+      width: 7rem;
+      background-color: $color-icon;
+      padding: 0 1rem;
+      border-radius: 10rem;
+      color: $color-white;
+      display: inline-block;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        @include btn-hover;
+      }
+    }
+
+    .curr {
+      margin: 0 2rem;
+    }
+  }
+  @include responsive(tab-land) {
+    grid-template-columns: repeat(3, min-content);
+    justify-content: center;
+  }
+  @include responsive(phone) {
+    grid-template-columns: repeat(2, min-content);
+    justify-content: center;
+  }
+}

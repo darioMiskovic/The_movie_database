@@ -1,0 +1,30 @@
+.container {
+  display: grid;
+  grid-template-rows: min-content 2rem minmax(min-content, 35rem) repeat(
+      4,
+      min-content
+    );
+
+  grid-template-columns:
+    [sidebar-start] 5rem [sidebar-end full-start] minmax(min-content, 1fr)
+    [center-start]90rem[center-end] 1fr [full-end];
+
+  @include responsive(tab-port) {
+    grid-template-columns:
+      [sidebar-start] 5rem [sidebar-end full-start] 1fr
+      [center-start]80rem[center-end] 1fr [full-end];
+  }
+
+  @include responsive(tab-port-sm) {
+    grid-template-columns:
+      [sidebar-start] 5rem [sidebar-end full-start] 1fr
+      [center-start]70rem[center-end] 1fr [full-end];
+  }
+
+  @include responsive(phone) {
+    grid-template-rows: min-content min-content minmax(min-content, 35rem) repeat(
+        4,
+        min-content
+      );
+  }
+}
