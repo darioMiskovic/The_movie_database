@@ -8,6 +8,8 @@ import {
   updateToggleBar,
   toggleBarEffect,
   recm,
+  updateFavorite,
+  updateFavIcon,
 } from "../Components/Functions.js";
 
 class CardInfo extends CreateElement {
@@ -75,7 +77,7 @@ class CardInfo extends CreateElement {
         </div>
         <div class="section-info__overview-favourite">
           <svg class="section-info__overview-icon">
-            <use xlink:href="../img/sprite.svg#icon-heart-outlined"></use>
+            ${updateFavIcon("cardId", "favoriteMovieIds")}
           </svg>
         </div>
         <div class="section-info__overview-video">
@@ -225,14 +227,12 @@ class CardInfo extends CreateElement {
   }
 
   infoLoad() {
-    updateToggleBar();
     let id = sessionStorage.getItem("cardId");
-
     const getData = new FetchData();
 
     getData.searchInfo("movie", id).then((info) => {
       this.render(info);
-
+      updateFavorite("cardId", "favoriteMovieIds");
       toggleModal();
       recm("section-info__recomendations", "section-info__recomendations-box");
       actorsInfo("section-info__actors-flex", "section-info__actors-box");

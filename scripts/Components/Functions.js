@@ -106,10 +106,13 @@ export function searchAll() {
   const form = document.getElementById("header__form");
   const inputValue = document.getElementById("header__form--search");
   form.addEventListener("submit", (e) => {
+    sessionStorage.setItem("mltSearch", `${inputValue.value}`);
+    sessionStorage.setItem("pagType", `mltSearch`);
     e.preventDefault();
     const getData = new FetchData();
     getData.multiSearch(inputValue.value).then((item) => {
       localStorage.setItem("cardArr", JSON.stringify(item));
+
       location.href = "search.html";
     });
   });
@@ -178,6 +181,7 @@ export function updateToggleBar() {
       e.target.className === "toggleBar__btn" ||
       e.target.closest(".toggleBar__btn")
     ) {
+      sessionStorage.setItem("pagType", "activeGenres");
       let activeList = document.querySelectorAll(".listActive");
       const activeIds = [...activeList].map((item) => item.id + "%2C").join("");
       const activeGenres = [...activeList].map((item) => item.id);
@@ -261,4 +265,48 @@ export function sliderEffect() {
   //   slider.style.transition = "transform 0.4s ease-in-out";
   //   slider.style.transform = `translateX(${-780 * current}px)`;
   // }, 10000);
+}
+
+export function updateFavorite(typeId, storageName) {
+  const overBox = document.querySelector(".section-info__overview-box");
+
+  overBox.addEventListener("click", (e) => {
+    if (e.target.closest(".section-info__overview-favourite")) {
+      location.reload();
+      let infoId = sessionStorage.getItem(`${typeId}`);
+
+      if (localStorage.getItem(`${storageName}`) === null) {
+        const favArr = [];
+        favArr.push(infoId);
+        localStorage.setItem(`${storageName}`, JSON.stringify(favArr));
+      } else {
+        const favArr = JSON.parse(localStorage.getItem(`${storageName}`));
+
+        if (favArr.indexOf(infoId) > -1) {
+          favArr.splice(favArr.indexOf(infoId), 1);
+          localStorage.setItem(`${storageName}`, JSON.stringify(favArr));
+        } else {
+          favArr.push(infoId);
+          localStorage.setItem(`${storageName}`, JSON.stringify(favArr));
+        }
+      }
+    }
+  });
+}
+
+export function updateFavIcon(typeId, storageName) {
+  const infoId = sessionStorage.getItem(`${typeId}`);
+  let lsArr = localStorage.getItem(`${storageName}`);
+
+  let html;
+
+  if (lsArr === null) {
+    html = `<use xlink:href="../img/sprite.svg#icon-heart-outlined"></use>`;
+  } else if (lsArr.indexOf(infoId) > -1) {
+    html = `<use xlink:href="../img/sprite.svg#icon-heart"></use>`;
+  } else {
+    html = `<use xlink:href="../img/sprite.svg#icon-heart-outlined"></use>`;
+  }
+
+  return html;
 }

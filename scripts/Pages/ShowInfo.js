@@ -6,6 +6,8 @@ import {
   toggleModal,
   actorsInfo,
   recmShow,
+  updateFavorite,
+  updateFavIcon,
 } from "../Components/Functions.js";
 
 class ShowInfo extends CreateElement {
@@ -73,7 +75,7 @@ class ShowInfo extends CreateElement {
         </div>
         <div class="section-info__overview-favourite">
           <svg class="section-info__overview-icon">
-            <use xlink:href="../img/sprite.svg#icon-heart-outlined"></use>
+          ${updateFavIcon("showId", "favoriteShowIds")}
           </svg>
         </div>
         <div class="section-info__overview-video">
@@ -232,6 +234,7 @@ class ShowInfo extends CreateElement {
 
     getData.searchInfo("tv", id).then((info) => {
       this.render(info);
+      updateFavorite("showId", "favoriteShowIds");
       toggleModal();
       recmShow(
         "section-info__recomendations",

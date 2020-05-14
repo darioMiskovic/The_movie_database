@@ -124,6 +124,7 @@ export default class Home extends CreateElement {
       const genreId = e.target.closest("div").id;
 
       sessionStorage.setItem("genreId", `${genreId}`);
+      sessionStorage.setItem("pagType", "genreId");
       location.href = "search.html";
     });
   }

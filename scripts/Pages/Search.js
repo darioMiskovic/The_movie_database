@@ -150,6 +150,21 @@ export default class Search extends CreateElement {
       }
     });
   }
+
+  // pagination() {
+  //   const pagBox = document.querySelector(".section-search__pagination");
+  //   const prev = document.querySelector(".prev");
+  //   const curr = document.querySelector("curr");
+  //   const next = document.querySelector("next");
+
+  //   pagBox.addEventListener("click", (e) => {
+  //     if (e.target.closest(".prev")) {
+  //       console.log("prev");
+  //     } else if (e.target.closest(".next")) {
+  //       console.log("next");
+  //     }
+  //   });
+  // }
 }
 
 const card = new Search();
@@ -158,6 +173,19 @@ let cards = JSON.parse(localStorage.getItem("cardArr"));
 cards !== null ? card.loadCardArr() : card.loadCard();
 
 card.cardInfo();
-
+// card.pagination();
 toggleBarEffect();
 updateToggleBar();
+
+/*
+
+pagType *  
+--
+mltSeacrh multiSearch(word, page = 1)
+--
+genreId searchMovieList(genreId, page = 1)
+--
+activeGenres - typeName  
+discoverList(type, genres, year = false, rating = false, page = 1)
+--
+*/
