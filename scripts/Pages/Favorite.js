@@ -40,49 +40,55 @@ class Favorite extends CreateElement {
     const favMovies = JSON.parse(localStorage.getItem("favoriteMovieIds"));
     const favShows = JSON.parse(localStorage.getItem("favoriteShowIds"));
 
-    [favMovies, favShows].forEach((typeArr) => {
-      typeArr;
-    });
-
     const getData = new FetchData();
+    if (favMovies !== null) {
+      favMovies.forEach((movieId) => {
+        getData.searchInfo("movie", movieId).then((movie) => {
+          const {
+            poster_path,
+            title,
+            release_date,
+            vote_average,
+            media_type,
+            id,
+          } = movie;
 
-    favMovies.forEach((movieId) => {
-      getData.searchInfo("movie", movieId).then((movie) => {
-        const {
-          poster_path,
-          title,
-          release_date,
-          vote_average,
-          media_type,
-          id,
-        } = movie;
-
-        this.render(
-          poster_path,
-          title,
-          release_date,
-          vote_average,
-          media_type,
-          id
-        );
+          this.render(
+            poster_path,
+            title,
+            release_date,
+            vote_average,
+            media_type,
+            id
+          );
+        });
       });
-    });
+    }
 
-    favShows.forEach((showId) => {
-      getData.searchInfo("tv", showId).then((show) => {
-        console.log(show.media_type);
-        const {
-          poster_path,
-          name,
-          first_air_date,
-          vote_average,
+    if (favShows !== null) {
+      favShows.forEach((showId) => {
+        getData.searchInfo("tv", showId).then((show) => {
+          console.log(show.media_type);
+          const {
+            poster_path,
+            name,
+            first_air_date,
+            vote_average,
 
-          id,
-        } = show;
+            id,
+          } = show;
 
-        this.render(poster_path, name, first_air_date, vote_average, "tv", id);
+          this.render(
+            poster_path,
+            name,
+            first_air_date,
+            vote_average,
+            "tv",
+            id
+          );
+        });
       });
-    });
+    }
   }
 
   cardInfo() {

@@ -186,8 +186,11 @@ export function updateToggleBar() {
       const activeIds = [...activeList].map((item) => item.id + "%2C").join("");
       const activeGenres = [...activeList].map((item) => item.id);
       const [rating, year] = [ratingVal.textContent, yearVal.textContent];
+
       sessionStorage.setItem("activeGenres", JSON.stringify(activeGenres));
       sessionStorage.setItem("typeName", program.textContent);
+      sessionStorage.setItem("yearRange", year);
+      sessionStorage.setItem("ratingRange", rating);
 
       getData
         .discoverList(program.textContent, activeIds, year, rating)
@@ -309,4 +312,82 @@ export function updateFavIcon(typeId, storageName) {
   }
 
   return html;
+}
+
+export function pagNum(dec, cur, inc, num, cb) {
+  num < 2 ? (dec.style.display = "none") : (dec.style.display = "inline-block");
+  let prev = num - 1;
+  let curr = num;
+  let next = num + 1;
+
+  // dec.textContent = prev;
+  // cur.textContent = curr;
+  // inc.textContent = next;
+
+  dec.innerHTML = ` <i class="fas fa-chevron-left"></i> ${prev}`;
+  cur.innerHTML = `${curr}`;
+  inc.innerHTML = `${next} <i class="fas fa-chevron-right"></i> `;
+
+  const pagType = sessionStorage.getItem("pagType");
+  let cards = document.querySelectorAll(".search-box");
+
+  const getData = new FetchData();
+
+  function render(arr) {
+    cards.forEach((card) => card.remove());
+
+    arr.forEach((card) => {
+      if (card.title) {
+        const {
+          poster_path,
+          title,
+          release_date,
+          vote_average,
+          media_type,
+          id,
+        } = card;
+
+        cb(poster_path, title, release_date, vote_average, media_type, id);
+      } else {
+        const {
+          poster_path,
+          name,
+          first_air_date,
+          vote_average,
+          media_type,
+          id,
+        } = card;
+
+        cb(poster_path, name, first_air_date, vote_average, media_type, id);
+      }
+    });
+  }
+
+  switch (pagType) {
+    case "genreId":
+      let genderId = sessionStorage.getItem("genreId");
+      getData.searchMovieList(genderId, curr).then((arr) => render(arr));
+      break;
+
+    case "mltSearch":
+      let mltId = sessionStorage.getItem("mltSearch");
+      getData.multiSearch(mltId, curr).then((arr) => render(arr));
+      break;
+
+    case "activeGenres":
+      let discoverIds = JSON.parse(sessionStorage.getItem("activeGenres"))
+        .map((item) => item + "%2C")
+        .join("");
+      let yrng = sessionStorage.getItem("yearRange");
+      let rrng = sessionStorage.getItem("ratingRange");
+      let type = sessionStorage.getItem("typeName");
+
+      getData
+        .discoverList(type, discoverIds, yrng, rrng, curr)
+        .then((arr) => render(arr));
+      break;
+
+    default:
+      break;
+  }
 }

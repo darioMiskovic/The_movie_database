@@ -6,6 +6,7 @@ import {
   checkPoster,
   toggleBarEffect,
   updateToggleBar,
+  pagNum,
 } from "../Components/Functions.js";
 
 export default class Search extends CreateElement {
@@ -151,20 +152,30 @@ export default class Search extends CreateElement {
     });
   }
 
-  // pagination() {
-  //   const pagBox = document.querySelector(".section-search__pagination");
-  //   const prev = document.querySelector(".prev");
-  //   const curr = document.querySelector("curr");
-  //   const next = document.querySelector("next");
+  pagination() {
+    const pagBox = document.querySelector(".section-search__pagination");
+    const prev = document.querySelector(".prev");
+    const curr = document.querySelector(".curr");
+    const next = document.querySelector(".next");
 
-  //   pagBox.addEventListener("click", (e) => {
-  //     if (e.target.closest(".prev")) {
-  //       console.log("prev");
-  //     } else if (e.target.closest(".next")) {
-  //       console.log("next");
-  //     }
-  //   });
-  // }
+    let currNum = 1;
+    curr.textContent = currNum;
+    next.innerHTML = `${currNum + 1} <i class="fas fa-chevron-right"></i> `;
+
+    currNum < 2
+      ? (prev.style.display = "none")
+      : (prev.style.display = "block");
+
+    pagBox.addEventListener("click", (e) => {
+      if (e.target.closest(".prev")) {
+        currNum--;
+        pagNum(prev, curr, next, currNum, this.render.bind(this));
+      } else if (e.target.closest(".next")) {
+        currNum++;
+        pagNum(prev, curr, next, currNum, this.render.bind(this));
+      }
+    });
+  }
 }
 
 const card = new Search();
@@ -173,19 +184,6 @@ let cards = JSON.parse(localStorage.getItem("cardArr"));
 cards !== null ? card.loadCardArr() : card.loadCard();
 
 card.cardInfo();
-// card.pagination();
+card.pagination();
 toggleBarEffect();
 updateToggleBar();
-
-/*
-
-pagType *  
---
-mltSeacrh multiSearch(word, page = 1)
---
-genreId searchMovieList(genreId, page = 1)
---
-activeGenres - typeName  
-discoverList(type, genres, year = false, rating = false, page = 1)
---
-*/
