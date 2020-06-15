@@ -6,7 +6,7 @@ export default class FetchData {
 
   async toggleBarSearch(genres, rating, year) {
     let res = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?api_key=8ce50ea5c815aad1fbc1a2f3c25f14f1&language=en-US&sort_by=vote_count.desc&include_adult=false&include_video=false&page=1&primary_release_year=${year}&vote_count.lte=${rating}&with_genres=${genres}&with_original_language=en
+      `https://api.themoviedb.org/3/discover/movie?api_key=${this.key}&language=en-US&sort_by=vote_count.desc&include_adult=false&include_video=false&page=1&primary_release_year=${year}&vote_count.lte=${rating}&with_genres=${genres}&with_original_language=en
           `
     );
     let data = await res.json();
@@ -114,6 +114,7 @@ export default class FetchData {
       `https://api.themoviedb.org/3/discover/${type}?api_key=${this.key}&language=en-US&sort_by=vote_count.desc&include_adult=false&include_video=false&page=${page}&year=${year}&vote_count.lte=${rating}&with_genres=${genres}`
     );
     let data = await res.json();
+
     return data.results;
   }
 }

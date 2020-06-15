@@ -748,8 +748,6 @@ body {
     padding: 1rem;
     box-shadow: 0.4rem 1rem 1rem rgba(0, 0, 0, 0.4); }
     .tv-show__box img {
-      width: 100%;
-      height: 100%;
       display: block; }
     .tv-show__box-description {
       align-self: stretch;
