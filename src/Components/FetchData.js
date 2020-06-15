@@ -1,7 +1,7 @@
 //Fetch data
 export default class FetchData {
   constructor() {
-    this.key = "8ce50ea5c815aad1fbc1a2f3c25f14f1";
+    this.key = "YOUR API KEY FROM https://www.themoviedb.org/";
   }
 
   async toggleBarSearch(genres, rating, year) {
